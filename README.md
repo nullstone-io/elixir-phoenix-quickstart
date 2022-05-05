@@ -46,14 +46,13 @@ docker compose restart app
 
 This app was generated following these steps.
 1. `mix phx.new --app=elixir_phoenix_quickstart .`
-2. `mix phx.gen.release --docker`
-3. Change `config/dev.exs` to ensure local docker works:
+2. Change `config/dev.exs` to ensure local docker works:
   ```elixir
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  http: [ip: {0, 0, 0, 0}, port: 4000],
+  http: [ip: {0, 0, 0, 0}, port: String.to_integer(System.get_env("PORT") || "4000")],
   ```
-4. Change `config/dev.exs` to use env var for database url:
+3. Change `config/dev.exs` to use env var for database url:
   ```elixir
   # Configure your database
   config :elixir_phoenix_quickstart, ElixirPhoenixQuickstart.Repo, 
@@ -63,4 +62,11 @@ This app was generated following these steps.
   #  hostname: "localhost",
   #  database: "elixir_phoenix_quickstart_dev",
     ...
+  ```
+4. `mix phx.gen.release --docker`
+5. Replace final stage of `Dockerfile`
+  ```
+  FROM nullstone/phoenix
+  # Only copy the final release from the build stage
+  COPY --from=builder --chown=nobody:root /app/_build/${MIX_ENV}/rel/elixir_phoenix_quickstart ./
   ```
