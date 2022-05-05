@@ -2,15 +2,17 @@ version: "3.8"
 
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: local.Dockerfile
     volumes:
       - .:/app
+      - deps:/app/deps
     ports:
       - "4000:4000"
     environment:
       - NULLSTONE_ENV=local
       - POSTGRES_URL=postgres://acme:acme@db:5432/acme
-      - DATABASE_URL=postgres://acme:acme@db:5432/acme
     depends_on:
       - db
 
@@ -22,3 +24,6 @@ services:
       - POSTGRES_USER=acme
       - POSTGRES_PASSWORD=acme
       - POSTGRES_DB=acme
+
+volumes:
+  deps:
