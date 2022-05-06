@@ -3,14 +3,6 @@
 This is a Elixir Phoenix Quickstart for [Nullstone](https://nullstone.io).
 This is based off the official Phoenix [Up and Running](https://hexdocs.pm/phoenix/up_and_running.html) guide.
 
-## Running locally
-
-You can run this project locally inside Docker or using elixir alone.
-To use docker, this project contains `docker-compose.yml` that runs with `MIX_ENV=dev`.
-This setup ensures that using Docker doesn't inhibit typical development workflows:
-- Hot reload is configured so that changes to the app doesn't require a reboot
-- Dependencies are installed on boot of docker container
-
 ## How to launch via Nullstone
 
 1. Create postgresql datastore.
@@ -27,10 +19,18 @@ This setup ensures that using Docker doesn't inhibit typical development workflo
   nullstone launch --source=phoenix-quickstart --app=<app-name> --env=<env-name>
   ```
 
+## How to run locally
+
+You can run this project locally inside Docker or using elixir alone.
+To use docker, this project contains `docker-compose.yml` that runs with `MIX_ENV=dev`.
+This setup ensures that using Docker doesn't inhibit typical development workflows:
+- Hot reload is configured so that changes to the app doesn't require a reboot
+- Dependencies are installed on boot of docker container
+
 ### Hot reload
 
 The `app` in `docker-compose.yml` is configured to automatically reload changes to files.
-You do not need to rebuild/restart the app when making changes to your app.
+You do not need to rebuild/restart the phoenix app when making changes to code.
 
 ### Update dependencies
 
