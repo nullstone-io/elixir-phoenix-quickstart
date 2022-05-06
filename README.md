@@ -3,7 +3,6 @@
 This is a Elixir Phoenix Quickstart for [Nullstone](https://nullstone.io).
 This is based off the official Phoenix [Up and Running](https://hexdocs.pm/phoenix/up_and_running.html) guide.
 
-
 ## Running locally
 
 You can run this project locally inside Docker or using elixir alone.
@@ -22,7 +21,7 @@ This setup ensures that using Docker doesn't inhibit typical development workflo
   ```shell
   nullstone up --wait --block=<app-name> --env=<env-name>
   ```
-6Build, push, and deploy
+6. Build, push, and deploy
   ```shell
   docker build -t phoenix-quickstart .
   nullstone launch --source=phoenix-quickstart --app=<app-name> --env=<env-name>
@@ -68,5 +67,5 @@ This app was generated following these steps.
   ```
   FROM nullstone/phoenix
   # Only copy the final release from the build stage
-  COPY --from=builder --chown=nobody:root /app/_build/${MIX_ENV}/rel/elixir_phoenix_quickstart ./
+  COPY --from=builder /app/_build/${MIX_ENV}/rel/elixir_phoenix_quickstart ./
   ```

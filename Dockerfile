@@ -67,4 +67,4 @@ RUN mix release
 FROM nullstone/phoenix
 
 # Only copy the final release from the build stage
-COPY --from=builder --chown=nobody:root /app/_build/${MIX_ENV}/rel/elixir_phoenix_quickstart ./
+COPY --from=builder /app/_build/${MIX_ENV}/rel/elixir_phoenix_quickstart ./
