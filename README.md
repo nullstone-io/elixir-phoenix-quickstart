@@ -49,7 +49,7 @@ This app was generated following these steps.
   ```elixir
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  http: [ip: {0, 0, 0, 0}, port: String.to_integer(System.get_env("PORT") || "4000")],
+  http: [ip: {0, 0, 0, 0}, port: String.to_integer(System.get_env("PORT") || "9000")],
   ```
 3. Change `config/dev.exs` to use env var for database url:
   ```elixir
